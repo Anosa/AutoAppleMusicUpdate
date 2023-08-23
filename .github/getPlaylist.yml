@@ -1,0 +1,25 @@
+on:
+  schedule:
+  - cron: "0 16 * * *"
+  
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Install Node.js
+      uses: actions/setup-node@v3
+
+    - name: Create Apple Music Playlist json  
+      run: |
+        npm install 
+        node getAppleMusic.mjs
+        
+    - name: Commit results
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add -A
+        git commit -m "Updated Apple Music playlist" -a || true
+        git push

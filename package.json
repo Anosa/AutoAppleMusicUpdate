@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "get-apple-music-playlist": "^1.1.2"
+  }
+}
